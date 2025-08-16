@@ -3,11 +3,7 @@ const mongoose = require("mongoose");
 const typingResultSchema = new mongoose.Schema({
   username: { type: String, required: true },
   totalWords: { type: Number, required: true },
-   game: { 
-    type: String, 
-    required: true, 
-    enum: ["typing-test", "tic-tac-toe", "memory-match"] 
-  },
+   game: { type: String, default:"typing-test"  },
   typeWords:{ type: Number, required: true },
   correctWords: { type: Number, required: true },
   incorrectWords: { type: Number, required: true },
@@ -15,7 +11,6 @@ const typingResultSchema = new mongoose.Schema({
   
 });
 
-// Rename model here
 const TypingResult = mongoose.model("TypingResult", typingResultSchema);
 
 module.exports = TypingResult;

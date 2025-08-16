@@ -7,8 +7,6 @@ const sentences = [
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "Integer nec odio. Praesent libero. Sed cursus ante dapibus diam."
 ];
-
-// Elements
 const refDiv = document.getElementById("reference");
 const text = document.getElementById("text");
 const wc = document.getElementById("wc");
@@ -27,9 +25,8 @@ let timer;
 let isTyping = false;
 let refText = "";
 
-// Functions
 function getRandomText() {
-    const count = 2 + Math.floor(Math.random() * 2); // 2-3 sentences
+    const count = 2 + Math.floor(Math.random() * 2);
     let arr = [];
     for (let i = 0; i < count; i++) {
         arr.push(sentences[Math.floor(Math.random() * sentences.length)]);
@@ -44,17 +41,15 @@ function highlight(currentOnly = true) {
 
 for (let i = 0; i < refText.length; i++) {
     if (i < typedText.length) {
-        // Already typed letters
+       
         if (typedText[i] === refText[i]) {
             html += `<span class="highlight">${refText[i]}</span>`;
         } else {
             html += `<span class="incorrect">${refText[i]}</span>`;
         }
     } else if (i === typedText.length) {
-        // Next letter to type → mark as current
         html += `<span class="current">${refText[i]}</span>`;
     } else {
-        // Remaining letters
         html += currentOnly ? refText[i] : `<span>${refText[i]}</span>`;
     }
 }
@@ -94,7 +89,6 @@ function showResult() {
     resultDiv.style.display = "block";
     text.disabled = true;
 
-    // Save result to DB
     fetch("/typing-test", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -127,7 +121,6 @@ function startTimer() {
     }
 }
 
-// Initialize test
 function initTest() {
     refText = getRandomText();
     refDiv.textContent = refText;
@@ -152,8 +145,7 @@ text.addEventListener("input", () => {
 retryBtn.addEventListener("click", initTest);
 
 leaderboardBtn.addEventListener("click", () => {
-    // specify the game name here
-    const game = "typing-test"; // or "tic-tac-toe", "memory-match"
+    const game = "typing-test";
     window.location.href = `/leaderboard/${game}`;
 });
 

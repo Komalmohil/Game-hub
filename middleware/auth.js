@@ -18,8 +18,8 @@ module.exports = async (req, res, next) => {
             return next();
         }
 
-        req.user = user;         // attach to request
-        res.locals.user = user;  // attach to locals for EJS templates
+        req.user = user;        
+        res.locals.user = user; 
         next();
     } catch (err) {
         console.error("JWT error:", err);

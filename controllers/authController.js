@@ -11,7 +11,6 @@ exports.getSignup = (req, res) => {
     res.render("signup");
 };
 
-// Login
 exports.login = async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -34,7 +33,6 @@ exports.login = async (req, res) => {
     }
 };
 
-// Signup
 exports.signup = async (req, res) => {
     const { username, email, password } = req.body;
     try {
