@@ -5,6 +5,7 @@ const authRoutes = require("./routes/authRoutes");
 const gameRoutes = require("./routes/gameRoutes");
 const http = require("http");
 const app = express();
+require("dotenv").config();
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -22,12 +23,12 @@ app.use((err, req, res, next) => {
     res.status(500).send("Something went wrong!");
 });
 
-const mongoUri = "mongodb://127.0.0.1:27017/wordcounter";
+
 const server = http.createServer(app);
 const initSocket = require("./sockets/ticTacToe");
 initSocket(server);
 
-mongoose.connect(mongoUri)
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log("MongoDB connected");
         server.listen(3000, () => console.log("Server running on http://localhost:3000"));
