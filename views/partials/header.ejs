@@ -14,10 +14,10 @@
       <span class="welcome-text">Welcome, <%= user.username %></span>
       <% if (typeof game !== 'undefined' && game) { %>
     <% if (typeof onLeaderboard !== 'undefined' && onLeaderboard) { %>
-      <!-- Currently on leaderboard: show return to game -->
+      
       <a href="/<%= game.toLowerCase().replace(/ /g, '-') %>" class="nav-btn toggle-btn">Return to Game</a>
     <% } else { %>
-      <!-- Currently on game page: show leaderboard -->
+    
       <a href="/leaderboard/<%= game.toLowerCase().replace(/ /g, '-') %>" class="nav-btn toggle-btn">Leaderboard</a>
     <% } %>
   <% } %>
