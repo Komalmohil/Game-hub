@@ -6,10 +6,10 @@ const ticTacToeController = require("../controllers/ticTacToeController");
 
 const router = express.Router();
 router.use(authMiddleware);
+
 router.get("/", gameController.getHome);
 router.get("/typing-test", gameController.getTypingTest);
 router.get("/tic-tac-toe", gameController.getTicTacToe); 
-router.get("/memory-match", gameController.getMemoryMatch);
 
 router.post("/typing-test", typingController.postTypingTest);
 router.get("/leaderboard/:game", typingController.getLeaderboard);

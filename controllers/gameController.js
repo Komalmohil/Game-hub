@@ -5,15 +5,11 @@ exports.getHome = (req, res) => {
 exports.getTypingTest = (req, res) => {
     res.render("typingTest", {
         user: req.user,
-        game: "Typing Test"
+        game: "Typing Test",
+        onLeaderboard: false
     });
 };
 
 exports.getTicTacToe = (req, res) => {
     res.render("ticTacToeHome", { user: req.user });
 };
-
-exports.getMemoryMatch = (req, res) => {
-    res.render("memoryMatch", { user: req.user });
-};
-
