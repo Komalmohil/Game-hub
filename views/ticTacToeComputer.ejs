@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tic Tac Toe vs Computer - GameHub</title>
+  <link rel="stylesheet" href="/css/ticTacToe.css">
+</head>
+<body>
+<%- include('partials/header', { user: user }) %>
+<div class="main">
+  <h2>Tic Tac Toe - vs Computer</h2>
+
+  <div class="info" id="gameInfo">
+    <p>Current Turn: <span id="currentPlayer">X</span></p>
+  </div>
+
+  <div class="board" id="board">
+    <% for (let i = 0; i < 9; i++) { %>
+      <div class="cell" data-index="<%= i %>"></div>
+    <% } %>
+  </div>
+
+  <button class="btn" id="resetBtn">Reset Game</button>
+</div>
+
+<script>
+const board = document.getElementById('board');
+const cells = document.querySelectorAll('.cell');
+const currentPlayerEl = document.getElementById('currentPlayer');
+const resetBtn = document.getElementById('resetBtn');
+
+let currentPlayer = 'X';
+let gameState = Array(9).fill('');
+
+const winConditions = [
+  [0,1,2],[3,4,5],[6,7,8],
+  [0,3,6],[1,4,7],[2,5,8],
+  [0,4,8],[2,4,6]
+];
+
+function checkWin() {
+  for (const [a,b,c] of winConditions) {
+    if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) return gameState[a];
+  }
+  return gameState.includes('') ? null : 'Draw';
+}
+
+function aiMove() {
+  const empty = gameState.map((v,i)=> v === '' ? i : null).filter(i => i !== null);
+  if (empty.length === 0) return;
+  const randIndex = empty[Math.floor(Math.random() * empty.length)];
+  gameState[randIndex] = 'O';
+  cells[randIndex].textContent = 'O';
+}
+
+function handleClick(e) {
+  const idx = e.target.dataset.index;
+  if (gameState[idx] !== '') return;
+
+  gameState[idx] = currentPlayer;
+  e.target.textContent = currentPlayer;
+
+  let winner = checkWin();
+  if (winner) return endGame(winner);
+
+  setTimeout(() => {
+    aiMove();
+    winner = checkWin();
+    if (winner) return endGame(winner);
+  }, 200);
+}
+
+
+function endGame(winner) {
+  if (winner === 'Draw') {
+    document.getElementById('gameInfo').innerHTML = '<p>It\'s a draw!</p>';
+  } else if (winner === 'X') {
+    document.getElementById('gameInfo').innerHTML = '<p>You win!</p>';
+  } else {
+    document.getElementById('gameInfo').innerHTML = '<p>Computer wins!</p>';
+  }
+  board.removeEventListener('click', handleClick);
+}
+
+function resetGame() {
+  gameState.fill('');
+  cells.forEach(cell => cell.textContent = '');
+  currentPlayer = 'X';
+  currentPlayerEl.textContent = currentPlayer;
+  document.getElementById('gameInfo').innerHTML = '<p>Current Turn: <span id="currentPlayer">X</span></p>';
+  board.addEventListener('click', handleClick);
+}
+
+board.addEventListener('click', handleClick);
+resetBtn.addEventListener('click', resetGame);
+</script>
+</body>
+</html>

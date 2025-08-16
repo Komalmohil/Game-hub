@@ -1,0 +1,62 @@
+.body{
+    margin: 0;
+}
+.main-header {
+    background: linear-gradient(90deg, #222, #444);
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.logo a {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.welcome-text {
+    margin-right: 15px;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.nav-btn {
+    color: white;
+    text-decoration: none;
+    margin-left: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.1);
+    transform: scale(1.05);
+}
+
+.signup {
+    background: #4CAF50;
+}
+
+.signup:hover {
+    background: #45a049;
+}
+
+.logout {
+    background: #e74c3c;
+}
+
+.logout:hover {
+    background: #c0392b;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/header', { user }) %>
+
+    <h1 class="page-title">Choose a Game</h1>
+    <div class="game-container">
+        
+        <div class="game-card" onclick="location.href='/typing-test'">
+            <img src="/img/typing.jpg" alt="Typing Test">
+            <h3>Typing Test</h3>
+            <p>Improve your typing speed</p>
+        </div>
+
+        <div class="game-card" onclick="location.href='/tic-tac-toe'">
+            <img src="/img/tic-tac-toe.jpg" alt="Tic Tac Toe">
+            <h3>Tic Tac Toe</h3>
+            <p>Classic 2-player game</p>
+        </div>
+    </div>
+</body>
+</html>
