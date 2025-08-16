@@ -1,0 +1,36 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
+const authRoutes = require("./routes/authRoutes");
+const gameRoutes = require("./routes/gameRoutes");
+
+const app = express();
+
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
+
+app.set("view engine", "ejs");
+
+app.use("/", authRoutes); 
+app.use("/", gameRoutes);   
+
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("Something went wrong!");
+});
+
+// --- MongoDB Connection & Server Start ---
+const mongoUri = "mongodb://127.0.0.1:27017/wordcounter";
+
+mongoose.connect(mongoUri)
+    .then(() => {
+        console.log("MongoDB connected");
+        app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+    })
+    .catch(err => {
+        console.error("MongoDB connection error:", err);
+        process.exit(1);
+    });

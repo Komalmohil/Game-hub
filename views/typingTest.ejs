@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Test</title>
+   <link rel="stylesheet" href="/css/typing.css">
+</head>
+<body>
+
+   <%- include('partials/header', { user: user, game: 'typing-test' }) %>
+
+<div class="typing-page">
+    <div class="container">
+        <div class="timer" id="timer">1:00</div>
+        <div id="reference"></div>
+        <textarea id="text" rows="10" cols="15"></textarea>
+        <p class="word-count">Words: <span id="wc">0</span></p>
+        <button id="retryBtn">Retry</button>
+    </div>
+
+    <!-- Result div on the right -->
+    <div id="result" style="display: none;">
+        <p>Total Words: <span id="totalWords">0</span></p>
+        <p>Typed Words: <span id="typedWords">0</span></p>
+        <p>Correct Words: <span id="correctWords">0</span></p>
+        <p>Incorrect Words: <span id="wrongWords">0</span></p>  
+        <button id="leaderboardBtn">Leaderboard</button>
+
+    </div>
+</div>
+
+<script src="/js/typing.js"></script>
+</body>
+</html>
