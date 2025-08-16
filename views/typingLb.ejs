@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,3 +56,62 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= game %> Leaderboard</title>
+  <link rel="stylesheet" href="/css/leadership.css">
+</head>
+<body>
+   <%- include('partials/header', { user: user }) %>
+   <div class="main">
+<h2>Leaderboard - <%= game %></h2>
+  <h3>Your Results</h3>
+<div class="user-results">
+  <% if(userResults.length === 0){ %>
+    <p>No results yet.</p>
+  <% } %>
+  <% userResults.forEach(result => { %>
+    <div class="result-card">
+      <p>Date: <%= new Date(result.date).toLocaleString() %></p>
+      <p>Total Words: <%= result.totalWords %></p>
+      <p>Typed Words: <%= result.typeWords %></p>
+      <p>Correct Words: <%= result.correctWords %></p>
+      <p>Incorrect Words: <%= result.incorrectWords %></p>
+    </div>
+  <% }) %>
+</div>
+
+
+<h3>Top 10 Players</h3>
+<h2>Leaderboard - <%= game %></h2>
+
+<table>
+  <tr>
+    <th>Rank</th>
+    <th>Username</th>
+    <th>Total Words</th>
+    <th>Typed Words</th>
+    <th>Correct Words</th>
+    <th>Incorrect Words</th>
+    <th>Last Played</th>
+  </tr>
+  <% topResults.forEach((r, idx) => { %>
+    <tr class="<%= r._id === currentUser ? 'highlight' : '' %>">
+      <td><%= idx + 1 %></td>
+      <td><%= r._id %></td>
+      <td><%= r.totalWords %></td>
+      <td><%= r.typedWords %></td>
+      <td><%= r.correctWords %></td>
+      <td><%= r.incorrectWords %></td>
+      <td><%= new Date(r.lastPlayed).toLocaleString() %></td>
+    </tr>
+  <% }) %>
+</table>
+</div>
+
+</body>
+</html>
+>>>>>>> 5143003f9ef8ac5d47fd4591f9ba3f2a0191d7c5
