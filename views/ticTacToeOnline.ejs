@@ -23,6 +23,7 @@
         <div class="cell" data-index="<%= i %>"></div>
       <% } %>
     </div>
+      <button class="btn" id="resetBtn">Reset Game</button>
   </div>
 </div>
 
@@ -117,6 +118,14 @@ function disableBoard() {
 function enableBoard() {
   cells.forEach(cell => cell.style.pointerEvents = "auto");
 }
+document.getElementById('resetBtn').addEventListener('click', () => {
+    gameState.fill('');
+    cells.forEach(cell => cell.textContent = '');
+    currentPlayer = 'X';
+    currentPlayerEl.textContent = currentPlayer;
+    document.getElementById('gameInfo').innerHTML = '<p>Current Turn: <span id="currentPlayer">X</span></p>';
+    board.addEventListener('click', handleClick);
+  });
 </script>
 
 </body>
