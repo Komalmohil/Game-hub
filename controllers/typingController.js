@@ -30,7 +30,7 @@ exports.getLeaderboard = async (req, res) => {
             { $group: {
                 _id: "$username",
                 totalWords: { $sum: "$totalWords" },
-                typeWords: { $sum: "$typeWords" },
+                typedWords: { $sum: "$typeWords" },
                 correctWords: { $sum: "$correctWords" },
                 incorrectWords: { $sum: "$incorrectWords" },
                 lastPlayed: { $max: "$date" }
