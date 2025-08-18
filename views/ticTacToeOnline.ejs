@@ -119,13 +119,19 @@ function enableBoard() {
   cells.forEach(cell => cell.style.pointerEvents = "auto");
 }
 document.getElementById('resetBtn').addEventListener('click', () => {
-    gameState.fill('');
-    cells.forEach(cell => cell.textContent = '');
-    currentPlayer = 'X';
-    currentPlayerEl.textContent = currentPlayer;
-    document.getElementById('gameInfo').innerHTML = '<p>Current Turn: <span id="currentPlayer">X</span></p>';
-    board.addEventListener('click', handleClick);
-  });
+  if (!roomId) return; 
+
+  boardState.fill("");
+  cells.forEach(cell => cell.textContent = "");
+  isGameOver = false;
+  currentTurn = "X"; 
+
+  enableBoard();
+  updateStatus();
+
+  socket.emit("resetGame", { roomId });
+});
+
 </script>
 
 </body>

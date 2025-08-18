@@ -77,4 +77,15 @@ module.exports = function(server) {
     }
     return null;
   }
+
+  
+socket.on("resetGame", () => {
+  boardState.fill("");
+  cells.forEach(cell => cell.textContent = "");
+  isGameOver = false;
+  currentTurn = "X";
+  enableBoard();
+  updateStatus();
+});
+
 };
