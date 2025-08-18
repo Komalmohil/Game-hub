@@ -131,6 +131,14 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 
   socket.emit("resetGame", { roomId });
 });
+socket.on("resetGame", ({ board, turn }) => {
+  boardState = board;
+  cells.forEach(cell => (cell.textContent = ""));
+  currentTurn = turn;
+  isGameOver = false;
+  enableBoard();
+  updateStatus();
+});
 
 </script>
 
