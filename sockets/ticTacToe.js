@@ -79,13 +79,12 @@ module.exports = function(server) {
   }
 
   
-socket.on("resetGame", () => {
-  boardState.fill("");
-  cells.forEach(cell => cell.textContent = "");
-  isGameOver = false;
-  currentTurn = "X";
-  enableBoard();
-  updateStatus();
+socket.on("resetGame", ({ roomId }) => {
+  const game = games[roomId];
+  if (!game) return;
+  game.board = Array(9).fill("");
+  game.turn = "X";
+  io.to(roomId).emit("resetGame", {board: game.board, turn: game.turn });
 });
 
 };
