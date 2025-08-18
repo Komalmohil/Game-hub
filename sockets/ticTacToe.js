@@ -57,7 +57,16 @@ module.exports = function(server) {
       game.turn = game.turn === "X" ? "O" : "X";
       io.to(roomId).emit("updateTurn", game.turn);
     });
+    
+    socket.on("resetGame", ({ roomId }) => {
+    const game = games[roomId];
+    if (!game) return;
 
+    game.board = Array(9).fill("");
+    game.turn = "X";
+
+    io.to(roomId).emit("resetGame", { board: game.board, turn: game.turn });
+  });
     socket.on("disconnect", () => {
       delete onlineUsers[socket.id];
       io.emit("updateUsers", onlineUsers);
@@ -77,14 +86,4 @@ module.exports = function(server) {
     }
     return null;
   }
-
-  
-socket.on("resetGame", ({ roomId }) => {
-  const game = games[roomId];
-  if (!game) return;
-  game.board = Array(9).fill("");
-  game.turn = "X";
-  io.to(roomId).emit("resetGame", {board: game.board, turn: game.turn });
-});
-
 };
