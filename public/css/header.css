@@ -82,7 +82,8 @@ background-color: rgba(160, 198, 220, 0.849);
   .nav-links {
     width: 100%;
     margin-top: 10px;
-    flex-direction: column;
+    flex-direction: row;
+    gap:15px;
     align-items: flex-start;
   }
 
@@ -91,7 +92,9 @@ background-color: rgba(160, 198, 220, 0.849);
     width: 30%;
     text-align: center;
   }
-
+.h2{
+margin:2px;
+}
   .welcome-text {
     margin: 2px 0;
   }
