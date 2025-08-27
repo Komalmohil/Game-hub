@@ -4,17 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Tic Tac Toe vs Computer - GameHub</title>
-  <link rel="stylesheet" href="/css/ticTacToe.css">
+  <link rel="stylesheet" href="/css/ticTacToe2.css">
 </head>
 <body>
 <%- include('partials/header', { user: user }) %>
 <div class="main">
-  <h2>Tic Tac Toe - vs Computer</h2>
+  <h2>Tic Tac Toe - You vs Computer</h2>
 
   <div class="info" id="gameInfo">
     <p>Current Turn: <span id="currentPlayer">X</span></p>
   </div>
-
+ 
   <div class="board" id="board">
     <% for (let i = 0; i < 9; i++) { %>
       <div class="cell" data-index="<%= i %>"></div>

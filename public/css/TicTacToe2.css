@@ -8,17 +8,30 @@ body {
 /* --- Layout --- */
 .main {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 1000px;
-  margin: 20px auto;
-  gap: 30px;
-  padding: 0 15px;
+  margin: 30px auto;
+  padding: 20px;
+  gap: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 /* --- Headings --- */
 h2 {
   color: #007bff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: 600;
+}
+
+/* --- Info Panel --- */
+.info {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 10px;
 }
 
 /* --- Game Board --- */
@@ -64,7 +77,7 @@ h2 {
   background-color: #0056b3;
 }
 
-/* --- Cards --- */
+/* --- Cards (optional, for extras) --- */
 .cards {
   display: flex;
   gap: 20px;
@@ -115,7 +128,7 @@ h2 {
   background: #0056b3;
 }
 
-/* --- Users List --- */
+/* --- Users List (optional, if you include sidebar) --- */
 .users {
   width: 200px;
   padding: 10px;
@@ -152,8 +165,6 @@ h2 {
 }
 
 /* --- Responsive --- */
-
-/* Tablet adjustments */
 @media (max-width: 992px) {
   .main {
     flex-direction: column;
@@ -171,7 +182,6 @@ h2 {
   }
 }
 
-/* Mobile adjustments */
 @media (max-width: 600px) {
   .board {
     grid-template-columns: repeat(3, 80px);
@@ -198,7 +208,6 @@ h2 {
   }
 }
 
-/* Extra small screens */
 @media (max-width: 400px) {
   .board {
     grid-template-columns: repeat(3, 70px);

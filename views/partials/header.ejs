@@ -15,10 +15,10 @@
       <% if (typeof game !== 'undefined' && game) { %>
     <% if (typeof onLeaderboard !== 'undefined' && onLeaderboard) { %>
       
-      <a href="/<%= game.toLowerCase().replace(/ /g, '-') %>" class="nav-btn toggle-btn">Return to Game</a>
+      <a href="/<%= game.toLowerCase().replace(/ /g, '-') %>" class="toggle-btn">Return to Game</a>
     <% } else { %>
     
-      <a href="/leaderboard/<%= game.toLowerCase().replace(/ /g, '-') %>" class="nav-btn toggle-btn">Leaderboard</a>
+      <a href="/leaderboard/<%= game.toLowerCase().replace(/ /g, '-') %>" class="toggle-btn">Leaderboard</a>
     <% } %>
   <% } %>
 

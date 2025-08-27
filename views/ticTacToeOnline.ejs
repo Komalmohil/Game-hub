@@ -11,7 +11,7 @@
 
 <div class="main" style="display:flex; gap:20px;">
 
-  <div class="users" style="width:200px; background:#f0f0f0; padding:10px; border-radius:8px;">
+  <div class="users">
     <h3>Online Users</h3>
     <ul id="userList"></ul>
   </div>
@@ -131,7 +131,14 @@ document.getElementById('resetBtn').addEventListener('click', () => {
 
   socket.emit("resetGame", { roomId });
 });
-
+socket.on("resetGame", () => {
+  boardState.fill("");
+  cells.forEach(cell => cell.textContent = "");
+  isGameOver = false;
+  currentTurn = "X";
+  enableBoard();
+  updateStatus();
+});
 </script>
 
 </body>
