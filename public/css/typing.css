@@ -160,7 +160,6 @@ h2, h3 {
   font-family: Arial, sans-serif;
 }
 
-/* 📱 Responsive Styling */
 @media (max-width: 1024px) {
   .typing-page {
     flex-direction: column;

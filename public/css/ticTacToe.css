@@ -5,7 +5,6 @@ body {
   color: #333;
 }
 
-/* --- Layout --- */
 .main {
   display: flex;
   max-width: 1000px;
@@ -14,14 +13,12 @@ body {
   padding: 0 15px;
 }
 
-/* --- Headings --- */
 h2 {
   color: #007bff;
   margin-bottom: 20px;
   font-weight: 600;
 }
 
-/* --- Game Board --- */
 .board {
   display: grid;
   grid-template-columns: repeat(3, 120px);

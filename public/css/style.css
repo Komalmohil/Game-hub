@@ -36,7 +36,7 @@ body {
 
 .game-card img {
   width: 80%;
-  height: auto; /* make image scale naturally */
+  height: auto; 
   max-height: 70%;
   object-fit: cover;
 }
@@ -58,7 +58,6 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
   .game-card {
     width: 300px;
@@ -74,7 +73,7 @@ body {
 
   .game-card {
     width: 80%;
-    height: auto; /* let height adjust naturally */
+    height: auto; 
     padding: 15px;
   }
 

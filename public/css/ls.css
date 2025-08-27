@@ -6,7 +6,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  padding: 10px; /* for small screen breathing space */
+  padding: 10px; 
 }
 
 .login-container,
@@ -15,7 +15,7 @@ body {
   padding: 30px;
   border-radius: 8px;
   width: 400px;
-  max-width: 100%; /* prevent overflow */
+  max-width: 100%;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
@@ -62,12 +62,10 @@ button:hover {
   color: #2575fc;
   text-decoration: none;
 }
-
-/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   .login-container,
   .signup-container {
-    width: 90%; /* shrink on tablets */
+    width: 90%; 
     padding: 20px;
   }
 
