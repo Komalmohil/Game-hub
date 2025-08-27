@@ -57,6 +57,7 @@ module.exports = function(server) {
       game.turn = game.turn === "X" ? "O" : "X";
       io.to(roomId).emit("updateTurn", game.turn);
     });
+    
     socket.on("resetGame", ({ roomId }) => {
     const game = games[roomId];
     if (!game) return;
@@ -85,8 +86,4 @@ module.exports = function(server) {
     }
     return null;
   }
-
-  
-
-
 };
