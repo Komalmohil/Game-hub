@@ -5,14 +5,6 @@ body {
   color: #333;
 }
 
-.main {
-  display: flex;
-  max-width: 1000px;
-  margin: 20px auto;
-  gap: 30px;
-  padding: 0 15px;
-}
-
 h2 {
   color: #007bff;
   margin-bottom: 20px;
@@ -45,7 +37,6 @@ h2 {
   transform: scale(1.05);
 }
 
-/* --- Buttons --- */
 .btn {
   padding: 12px 25px;
   border: none;
@@ -61,13 +52,21 @@ h2 {
   background-color: #0056b3;
 }
 
-/* --- Cards --- */
 .cards {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
+ 
 }
+
+.main {
+  display: flex;
+  justify-content: center; 
+  align-items: center;      
+  height: 100%;             
+}
+
 
 .card {
   background: #fff;
@@ -112,15 +111,14 @@ h2 {
   background: #0056b3;
 }
 
-/* --- Users List --- */
 .users {
   width: 200px;
   padding: 10px;
   border-radius: 8px;
-  background: #e1eeef;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
+#toggleUsersBtn{
+  background: #399aaf;
+}
 .users h3 {
   margin-bottom: 10px;
   font-size: 18px;
@@ -148,9 +146,6 @@ h2 {
   background: #e0e7ff;
 }
 
-/* --- Responsive --- */
-
-/* Tablet adjustments */
 @media (max-width: 992px) {
   .main {
     flex-direction: column;
@@ -158,8 +153,8 @@ h2 {
   }
 
   .board {
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3,77px);
+    grid-template-rows: repeat(3, 77px);
   }
 
   .users {
@@ -168,16 +163,16 @@ h2 {
   }
 }
 
-/* Mobile adjustments */
 @media (max-width: 600px) {
   .board {
-    grid-template-columns: repeat(3, 80px);
-    grid-template-rows: repeat(3, 80px);
+    grid-template-columns: repeat(3,47px);
+    grid-template-rows: repeat(3,47px);
     gap: 8px;
   }
 
   .cell {
-    font-size: 2em;
+    font-size: 1.4em;
+    width:80%;
   }
 
   .btn {
@@ -194,16 +189,14 @@ h2 {
     width: 100%;
   }
 }
-
-/* Extra small screens */
 @media (max-width: 400px) {
   .board {
-    grid-template-columns: repeat(3, 70px);
-    grid-template-rows: repeat(3, 70px);
+    grid-template-columns: repeat(3, 47px);
+    grid-template-rows: repeat(3, 47px);
     gap: 6px;
   }
 
   .cell {
-    font-size: 1.6em;
+    font-size: 1.3em;
   }
 }

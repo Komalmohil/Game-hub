@@ -23,12 +23,17 @@ module.exports = function(server) {
       players[socket.id] = "X";
       players[targetSocketId] = "O";
 
-      games[roomId] = { board: Array(9).fill(""), turn: "X", players };
+      const usernames = {};
+      usernames[socket.id] = onlineUsers[socket.id];
+      usernames[targetSocketId] = onlineUsers[targetSocketId];
+
+      games[roomId] = { board: Array(9).fill(""), turn: "X", players, usernames };
 
       socket.emit("assignSymbol", "X");
       io.to(targetSocketId).emit("assignSymbol", "O");
 
-      io.to(roomId).emit("startGame", { roomId, players: players });
+      io.to(roomId).emit("startGame", { roomId, players, usernames });
+
     });
 
     socket.on("makeMove", ({ roomId, idx }) => {
@@ -59,14 +64,18 @@ module.exports = function(server) {
     });
     
     socket.on("resetGame", ({ roomId }) => {
-    const game = games[roomId];
-    if (!game) return;
+  if (!games[roomId]) {
+    const players = {};
+    players[socket.id] = "X"; 
+    return;
+  }
 
-    game.board = Array(9).fill("");
-    game.turn = "X";
+  games[roomId].board = Array(9).fill("");
+  games[roomId].turn = "X";
 
-    io.to(roomId).emit("resetGame", { board: game.board, turn: game.turn });
-  });
+  io.to(roomId).emit("resetGame", { board: games[roomId].board, turn: "X" });
+});
+
     socket.on("disconnect", () => {
       delete onlineUsers[socket.id];
       io.emit("updateUsers", onlineUsers);

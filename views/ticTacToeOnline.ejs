@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +8,15 @@
 <body>
 <%- include('partials/header', { user: user }) %>
 
-<div class="main" style="display:flex; gap:20px;">
+
 
   <div class="users">
-    <h3>Online Users</h3>
+  <button id="toggleUsersBtn" class="btn">Show Online Users</button>
+  <div id="usersContainer" style="display:none;">
     <ul id="userList"></ul>
   </div>
+</div>
+<div class="main" style="display:flex; gap:20px;">
 
   <div>
     <h3 id="status">Select a user to start</h3>
@@ -43,6 +45,20 @@ let isGameOver = false;
 
 socket.emit("joinLobby", username);
 
+
+const toggleBtn = document.getElementById("toggleUsersBtn");
+const usersContainer = document.getElementById("usersContainer");
+
+toggleBtn.addEventListener("click", () => {
+  if (usersContainer.style.display === "none") {
+    usersContainer.style.display = "block";
+    toggleBtn.textContent = "Hide Online Users";
+  } else {
+    usersContainer.style.display = "none";
+    toggleBtn.textContent = "Show Online Users";
+  }
+});
+
 socket.on("updateUsers", users => {
   userListEl.innerHTML = "";
   Object.entries(users).forEach(([id, name]) => {
@@ -52,6 +68,8 @@ socket.on("updateUsers", users => {
     li.style.cursor = "pointer";
     li.onclick = () => {
       socket.emit("challenge", id);
+      usersContainer.style.display = "none";
+      toggleBtn.textContent = "Show Online Users";
     };
     userListEl.appendChild(li);
   });
@@ -68,10 +86,11 @@ socket.on("startGame", data => {
   isGameOver = false;
   enableBoard();
 
-  const opponentName = Object.entries(data.players)
-    .find(([id, sym]) => id !== socket.id)[1];
+  const opponentId = Object.keys(data.players).find(id => id !== socket.id);
+  const opponentName = data.usernames[opponentId];
   document.getElementById("status").innerText = `Playing with ${opponentName}`;
 });
+
 
 cells.forEach(cell => {
   cell.addEventListener("click", () => {
