@@ -164,7 +164,7 @@ h2 {
 
   .board {
     grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3,100px);
+    grid-template-rows: repeat(3, 100px);
   }
 
   .users {
@@ -175,8 +175,8 @@ h2 {
 
 @media (max-width: 600px) {
   .board {
-    grid-template-columns: repeat(3,80px);
-    grid-template-rows: repeat(3,80px);
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
     gap: 8px;
   }
 
